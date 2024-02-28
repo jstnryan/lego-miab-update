@@ -4,8 +4,8 @@ This is a **very** simple application for automated DNS TXT record updates on a 
 To fill this gap, this application uses the [External Program provider](https://go-acme.github.io/lego/dns/exec/) in lego and communicates with the Mail-in-a-Box server via the [MIAB DNS API](https://mailinabox.email/api-docs.html#tag/DNS).
 
 ## Build
-```
-git clone https://github.com/jstnryan/lego-miab-update
+```shell
+git clone https://github.com/jstnryan/lego-miab-update.git
 cd lego-miab-update
 go build
 ```
@@ -53,10 +53,10 @@ Using Docker Compose, an example could look like this:
 services:
   traefik:
     environment:
-      - "LEGO_MIAB_HOST=box.example.com"
-      - "LEGO_MIAB_USER=admin@example.com"
-      - "LEGO_MIAB_PASS=P@55w0rd!"
-      - "EXEC_PATH=./lego-miab-update"
+      - LEGO_MIAB_HOST=box.example.com
+      - LEGO_MIAB_USER=admin@example.com
+      - LEGO_MIAB_PASS=P@55w0rd!
+      - EXEC_PATH=./lego-miab-update
     command:
       - --certificatesresolvers.myresolver.acme.email=admin@example.com
       - --certificatesresolvers.myresolver.acme.storage=acme.json
